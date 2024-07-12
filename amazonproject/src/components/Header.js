@@ -1,0 +1,91 @@
+    import React from 'react'
+    import "./header.css";
+    import { IoSearchOutline } from "react-icons/io5";
+    import { LiaCartPlusSolid } from "react-icons/lia";
+    import { BiCart } from "react-icons/bi";
+    import { CiLocationOn } from "react-icons/ci";
+    import { IoMenuSharp } from "react-icons/io5";
+    import { useState } from 'react';
+
+function Header() {
+  const [cartCount, setCartCount] = useState(0);
+  const [address, setAddress] = useState("Broken Arrow, OK");
+
+  const addToCart = () => {
+    setCartCount(cartCount + 1);
+  };
+
+  const updateAddress = () => {
+    const newAddress = prompt("Enter your address:");
+    if (newAddress) {
+      setAddress(newAddress);
+    }
+  };
+
+  return (
+    <div className="header-wrapper">
+      <header className="header">
+        <div className="header__logo">
+          <img
+            src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
+            alt="Amazon Logo"
+          />
+        </div>
+
+        <div className="header__deliverTo" onClick={updateAddress}>
+          <CiLocationOn className="header__locationIcon" />
+          <div className="header__deliverToText">
+            <span className="header__deliverToLineOne">Deliver to</span>
+            <span className="header__deliverToLineTwo">{address}</span>
+          </div>
+        </div>
+        <div className="header__search">
+          <select name="" id="">
+            <option value="">All</option>{" "}
+          </select>
+          <input type="text" className="header__searchInput" />
+          <IoSearchOutline className="header__searchIcon" />
+        </div>
+        <div className="header__nav">
+          <div className="header__option">
+            <span className="header__optionLineOne">Hello, Sign in</span>
+            <span className="header__optionLineTwo">Account & Lists</span>
+          </div>
+          <div className="header__option">
+            <span className="header__optionLineOne">Returns</span>
+            <span className="header__optionLineTwo">& Orders</span>
+          </div>
+          <div className="header__option">
+            <span className="header__optionLineOne">Your</span>
+            <span className="header__optionLineTwo">Prime</span>
+          </div>
+          <div className="header__optionBasket" onClick={addToCart}>
+            <BiCart size={35} />
+            <span className="header__basketCount">{cartCount}</span>
+          </div>
+        </div>
+      </header>
+      <div className="lowerHeader">
+        <ul className="lowerHeader__links">
+          <li className="lowerHeader__link">
+            {" "}
+            <IoMenuSharp /> <p className='text__all'>All</p>
+          </li>
+          <li className="lowerHeader__link">Same-Day Delivery</li>
+          <li className="lowerHeader__link">Medical Care</li>
+          <li className="lowerHeader__link">Amazon Business</li>
+          <li className="lowerHeader__link">Amazon Basics</li>
+          <li className="lowerHeader__link">Livestreams</li>
+          <li className="lowerHeader__link">Pharmacy</li>
+          <li className="lowerHeader__link">Buy Again</li>
+          <li className="lowerHeader__link">Household,Health &Baby Care</li>
+          <li className="lowerHeader__link">Shop By Interest</li>
+          <li className="lowerHeader__link">Books</li>
+          <li className="lowerHeader__link">Subscribe & Save</li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export default Header
