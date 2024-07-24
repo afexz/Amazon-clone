@@ -1,28 +1,26 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-// import Product from './Product';
-import ProductCard from "./ProductCard";
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import ProductCard from './ProductCard'
+import "./product.css";
 
 function Product() {
-  const [first, setFirst] = useState();
+  const [products, setProducts] = useState([])
+  useEffect(()=>{
+    axios.get("https://fakestoreapi.com/products")
+    .then((res) => {
+      setProducts(res.data);
+    }).catch ((err)=>{
+      console.log(err)
+    })
+  },[])
 
-  useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => {
-        setFirst(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   return (
-    <div>
-      {first.map((singleProd) => (
-        <ProductCard products={singleProd} key={singleProd.id} />
-      ))}
+    <div className='product_wrapper'>
+      {products.map((singleProduct)=>{
+        return <ProductCard products={singleProduct} key={singleProduct.id}/>
+      })}
     </div>
-  );
+  )
 }
 
-export default Product;
+export default Product
