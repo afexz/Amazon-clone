@@ -11,12 +11,9 @@ function App() {
     <div className="App">
       <Header/>
       <CarouselImage/>
-<<<<<<< HEAD
       <Catagory/>
       <Product/>
-=======
->>>>>>> refs/remotes/origin/main
-    </div>
+      </div>
   );
 }
 
