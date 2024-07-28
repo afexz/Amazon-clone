@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./catagory.css"
 import productImage from "./topproducts";
 
-function Category() {
+function Catagory() {
   const [products, setProducts] = useState([]);
 // https: useEffect(() => {
 //   fetch("topproducts")
@@ -33,4 +33,4 @@ function Category() {
   );
 }
 
-export default Category;
+export default Catagory;

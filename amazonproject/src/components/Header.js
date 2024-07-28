@@ -6,6 +6,7 @@
     import { CiLocationOn } from "react-icons/ci";
     import { IoMenuSharp } from "react-icons/io5";
     import { useState } from 'react';
+    import { Link } from 'react-router-dom';
 
 function Header() {
   const [cartCount, setCartCount] = useState(0);
@@ -25,10 +26,12 @@ function Header() {
    <div className="header-wrapper">
      <header className="header">
        <div className="header__logo">
-         <img
-           src="https://pngimg.com/uploads/amazon/small/amazon_PNG11.png"
-           alt="Amazon Logo"
-         />
+         <Link to="/">
+           <img
+             src="https://pngimg.com/uploads/amazon/small/amazon_PNG11.png"
+             alt="Amazon Logo"
+           />
+         </Link>
        </div>
 
        <div className="header__deliverTo" onClick={updateAddress}>
@@ -54,19 +57,24 @@ function Header() {
            {/* <span className="header__optionLineOne">Your</span> */}
            <span className="header__optionLineTwo">EN</span>
          </div>
-         <div className="header__option">
-           <span className="header__optionLineOne">Hello, Sign in</span>
-           <span className="header__optionLineTwo">Account & Lists</span>
-         </div>
-         <div className="header__option">
-           <span className="header__optionLineOne">Returns</span>
-           <span className="header__optionLineTwo">& Orders</span>
-         </div>
-    
-         <div className="header__optionBasket" onClick={addToCart}>
-           <BiCart size={35} />
-           <span className="header__basketCount">{cartCount}</span>
-         </div>
+         <Link to="/auth">
+           <div className="header__option">
+             <span className="header__optionLineOne">Hello, Sign in</span>
+             <span className="header__optionLineTwo">Account & Lists</span>
+           </div>
+         </Link>
+         <Link to="/orders">
+           <div className="header__option">
+             <span className="header__optionLineOne">Returns</span>
+             <span className="header__optionLineTwo">& Orders</span>
+           </div>
+         </Link>
+         <Link to="/cart">
+           <div className="header__optionBasket" onClick={addToCart}>
+             <BiCart size={35} />
+             <span className="header__basketCount">{cartCount}</span>
+           </div>
+         </Link>
        </div>
      </header>
      <div className="lowerHeader">

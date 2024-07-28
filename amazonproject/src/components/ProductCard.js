@@ -1,33 +1,32 @@
-import React from 'react';
-import Rating from '@mui/material/Rating';
-import CurrencyFormat from './CurrencyFormat';
-import './product.css'
+import React from "react";
+import Rating from "@mui/material/Rating";
+import CurrencyFormat from "./CurrencyFormat";
+import "./product.css";
+import { Link } from "react-router-dom";
 
-function ProductCard({ products }) {
-  const { image, title, id, rating, price } = products;
+function ProductCard({ product, flex, renderDesc}) {
+  // Changed to product
+  const { image, title, id, rating = { rate: 0, count: 0 }, price, description } = product;
 
   return (
-    <div className='card__container'>
-      <a>
-        <img src={image} alt=''/>
-      </a>
+    <div className={`card__container ${flex ? "product__flexed" : ""}`}>
+      <Link to={`/products/${id}`}>
+        <img src={image} alt="" />
+      </Link>
       <div>
         <h3>{title}</h3>
-        <div className='rating'>
-          {/* rating */}
+        {renderDesc && <div className="descript"> {description}</div>}
+        <div className="rating">
           <Rating value={rating.rate} precision={0.1} readOnly />
-          {/* rating number */}
           <small>{rating.count}</small>
         </div>
         <div>
-          {/* price */}
-          <CurrencyFormat amount={price}/>
+          <CurrencyFormat amount={price} />
         </div>
-        <button className='button'>add to cart</button>
+        <button className="button">add to cart</button>
       </div>
     </div>
   );
 }
 
 export default ProductCard;
-
