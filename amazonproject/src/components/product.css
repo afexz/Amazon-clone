@@ -1,5 +1,5 @@
 .card__container {
-  width: 250px;
+  width: 205px;
   border: 1px solid #ccc;
   border-radius: 10px;
   color: black;
@@ -21,7 +21,7 @@
   max-width: 100%;
   /* border-radius: 10px; */
   padding: 10px;
-  height: 170px;
+  height: 150px;
   object-fit: contain;
 }
 .button {
@@ -43,7 +43,7 @@
 }
 
 .card__container h3 {
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   margin: 8px 0;
 }
 
@@ -60,7 +60,7 @@
 } */
 
 .card__container .price {
-  font-size: 1.2rem;
+  font-size: 1.0rem;
   margin: 8px 0;
   font-weight: bold;
 } 
@@ -84,7 +84,7 @@
   grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
   max-width: 1450px;
   margin: 100px auto 100px auto;
-  gap: 110px;
+  gap: 80px;
   justify-items: center;
 }
 .product_wrapper div{
