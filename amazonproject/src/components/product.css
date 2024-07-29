@@ -109,10 +109,10 @@
   margin-right: 40px;
 }
 .product__flexed{
-  height: 50vh;
+  height: 21vh;
 }
 .product__flexed img {
-  max-width: 439px !important;
+  max-width: 120px !important;
   height: auto;
 }
 .descript {

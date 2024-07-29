@@ -29,7 +29,7 @@ function Product() {
         <div className="product_wrapper">
           {products.map((singleProduct) => {
             return (
-              <ProductCard product={singleProduct} key={singleProduct.id} />
+              <ProductCard renderAdd={true} product={singleProduct} key={singleProduct.id} />
             );
           })}
         </div>

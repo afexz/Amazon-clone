@@ -5,16 +5,23 @@
     import { BiCart } from "react-icons/bi";
     import { CiLocationOn } from "react-icons/ci";
     import { IoMenuSharp } from "react-icons/io5";
-    import { useState } from 'react';
+    import { useState, useContext } from 'react';
     import { Link } from 'react-router-dom';
+    import { DataContext } from './DataProvider';
+  
 
 function Header() {
   const [cartCount, setCartCount] = useState(0);
+   const [{basket}, dispatch] = useContext(DataContext);
   const [address, setAddress] = useState("Broken Arrow, OK");
+  const totalItem = basket?.reduce((amount, item)=>{
+    return item.amount + amount
+  },0)
 
-  const addToCart = () => {
-    setCartCount(cartCount + 1);
-  };
+
+  // const addToCart = () => {
+  //   setCartCount(cartCount + 1);
+  // };
 
   const updateAddress = () => {
     const newAddress = prompt("Enter your address:");
@@ -70,9 +77,9 @@ function Header() {
            </div>
          </Link>
          <Link to="/cart">
-           <div className="header__optionBasket" onClick={addToCart}>
+           <div className="header__optionBasket">
              <BiCart size={35} />
-             <span className="header__basketCount">{cartCount}</span>
+             <span className="header__basketCount">{totalItem}</span>
            </div>
          </Link>
        </div>
